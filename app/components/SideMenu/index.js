@@ -24,10 +24,10 @@ function SideMenu({ toggle, logout }) {
       <List>
         <Link to="/"><ListItem>Comandas</ListItem></Link>
         <Link to="/estoque"><ListItem>Gerenciamento de estoque</ListItem></Link>
-        <Link to="/"><ListItem>Planilha de transações</ListItem></Link>
+        <Link to="/transacoes"><ListItem>Planilha de transações</ListItem></Link>
         {/*<Link to="/cadastrar-gerente"><ListItem>Cadastrar gerente</ListItem></Link>*/}
         <Link to="/cadastrar-administrador"><ListItem>Cadastrar administrador</ListItem></Link>
-        <Link to="/"><ListItem>Sobre</ListItem></Link>
+        <Link to="/sobre"><ListItem>Sobre</ListItem></Link>
         <ListItem onClick={logout}>Sair</ListItem>
         <div className={styles.footer}><a target="_blank" href="http://luandro.com">por luandro</a></div>
       </List>    

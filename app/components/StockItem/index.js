@@ -24,11 +24,11 @@ function StockItem({ remove, name, created, notification, price, stock, id }) {
         targetOrigin={{ horizontal: 'right', vertical: 'top' }}
         anchorOrigin={{ horizontal: 'right', vertical: 'top' }}
       >
-        <MenuItem primaryText="Editar nome" />
+        {/*<MenuItem primaryText="Editar nome" />
         <MenuItem primaryText="Editar preço" />
         <MenuItem primaryText="Editar estoque" />
         <MenuItem primaryText="Editar aviso de estoque" />
-        <MenuItem primaryText="Editar promoção" />
+        <MenuItem primaryText="Editar promoção" />*/}
         <MenuItem onClick={() => remove(id)} primaryText="Remover produto" />
       </IconMenu>
       <h3>{name}</h3>

@@ -192,6 +192,34 @@ export default function createRoutes(store) {
         importModules.catch(errorLoading);
       },
     }, {
+      path: '/transacoes',
+      name: 'transactionsPage',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          System.import('containers/TransactionsPage/reducer'),
+          System.import('containers/TransactionsPage/sagas'),
+          System.import('containers/TransactionsPage'),
+        ]);
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([reducer, sagas, component]) => {
+          injectReducer('transactionsPage', reducer.default);
+          injectSagas(sagas.default);
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
+      },
+    }, {
+      path: '/sobre',
+      name: 'aboutPage',
+      getComponent(location, cb) {
+        System.import('components/AboutPage')
+          .then(loadModule(cb))
+          .catch(errorLoading);
+      },
+    }, {
       path: '*',
       name: 'notfound',
       getComponent(nextState, cb) {
