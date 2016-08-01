@@ -1,6 +1,13 @@
 import each from 'lodash/each';
 
-export const parseMoney = (value) => `R$ ${value.toString().replace(/\B(?=(\d{2})+(?!\d))/g, ',')}`;
+export const parseMoney = (value) => {
+  let tmp = `${value}`;
+  tmp = tmp.replace(/([0-9]{2})$/g, ',$1');
+  if (tmp.length > 6) {
+    tmp = tmp.replace(/([0-9]{3}),([0-9]{2}$)/g, '.$1,$2');
+  }
+  return `R$${tmp}`;
+};
 
 export const parseImmutableObject = (payload) => {
   const itemsList = [];

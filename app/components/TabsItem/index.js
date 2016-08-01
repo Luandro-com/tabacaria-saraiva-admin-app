@@ -25,7 +25,7 @@ function TabsItem({ id, created, items, products }) {
   // add prices of products according to quantity in items list
   products.map((prod) => console.log('prod:', prod));
   items.map((item) => console.log('item:', item));
-  const total = 16000;
+  const total = 1600000;
   return (
     <div className={styles.container}>
       <div className={styles.name}>
