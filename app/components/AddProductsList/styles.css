@@ -1,0 +1,17 @@
+.container {
+  background: #CCBEA5;
+}
+.addButton {
+  position: fixed;
+  bottom: 3%;
+  right: 3%;
+}
+.total {
+  position: fixed;
+  bottom: 3%;
+  left: 3%;
+  background: #872325;
+  padding: 10px 40px;
+  border-radius: 25px;
+  color: #CCBEA5;
+}

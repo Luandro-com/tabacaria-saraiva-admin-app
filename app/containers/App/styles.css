@@ -1,0 +1,30 @@
+/* Global styles */
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  color: #312F2F;
+  background: #CCBEA5;
+}
+a {
+  color: #312F2F;
+  text-decoration: none;
+}
+body {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+body.fontLoaded {
+  font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+:global(#app) {
+  background-color: #FAFAFA;
+  min-height: 100%;
+  min-width: 100%;
+}
+
+.container {
+  background: #CCBEA5;
+}

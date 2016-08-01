@@ -1,0 +1,7 @@
+.container { /* stylelint-ignore */
+}
+.sideMenu {
+  text-align: right;
+  width: 200px;
+  background: red;
+}

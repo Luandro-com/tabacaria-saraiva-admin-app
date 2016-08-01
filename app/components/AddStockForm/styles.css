@@ -1,0 +1,12 @@
+.container {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.form {
+  margin: 10% auto;
+}
+
+.button {
+  margin: 50px 0;
+}

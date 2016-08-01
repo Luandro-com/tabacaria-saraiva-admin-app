@@ -1,0 +1,15 @@
+.container {
+  margin: 3% auto;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-around; 
+}
+.button {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  text-align: center;
+}
+.button * {
+  margin: 1px auto;
+}

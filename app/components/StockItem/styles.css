@@ -1,0 +1,6 @@
+.container {
+  margin: 3% auto;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-around; 
+}

@@ -1,0 +1,12 @@
+.stockList { /* stylelint-ignore */
+
+}
+.loading {
+  text-align: center;
+  margin-top: 10%;
+}
+.addButton {
+  position: fixed;
+  bottom: 3%;
+  right: 3%;
+}
