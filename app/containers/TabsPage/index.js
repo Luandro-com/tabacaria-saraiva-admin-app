@@ -10,19 +10,12 @@ import { connect } from 'react-redux';
 
 import selectTabsPage from './selectors';
 import selectStockPage from 'containers/StockPage/selectors';
-import { load } from './actions';
+import { closeTab } from './actions';
 
 import SearchNavBar from 'containers/SearchNavBar';
 import TabsList from 'components/TabsList';
 
 export class TabsPage extends React.Component { // eslint-disable-line react/prefer-stateless-function
-  static propTypes = {
-    loadTabs: React.PropTypes.func.isRequired,
-  }
-
-  componentDidMount() {
-    this.props.loadTabs();
-  }
 
   render() {
     return (
@@ -41,7 +34,7 @@ const mapStateToProps = createStructuredSelector({
 
 function mapDispatchToProps(dispatch) {
   return {
-    loadTabs: () => dispatch(load()),
+    closeTab: (id) => dispatch(closeTab(id)),
     dispatch,
   };
 }

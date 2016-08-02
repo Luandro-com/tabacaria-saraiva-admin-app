@@ -9,7 +9,7 @@ export function* loadTabs() {
     const fetch = yield call(getAll, 'tabs');
     console.log('fetch:', fetch);
     if (fetch.success) {
-      yield put(loadSuccess(fetch.data))
+      yield put(loadSuccess(fetch.data));
     }
   }
 }

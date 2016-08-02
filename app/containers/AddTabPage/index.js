@@ -21,9 +21,7 @@ export class AddTabPage extends React.Component { // eslint-disable-line react/p
   render() {
     const { updateItems, items, loading } = this.props;
     return (
-      <div>
-        <AddProductsList update={updateItems} items={items} loading={loading} />
-      </div>
+      <AddProductsList update={updateItems} items={items} loading={loading} />
     );
   }
 }

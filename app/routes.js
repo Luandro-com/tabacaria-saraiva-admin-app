@@ -6,6 +6,7 @@ import { getAsyncInjectors } from 'utils/asyncInjectors';
 import { currentUser } from 'utils/localstorage';
 import { loginSuccess } from 'containers/LoginPage/actions';
 import { load as loadStock } from 'containers/StockPage/actions';
+import { load as loadTabs } from 'containers/TabsPage/actions';
 
 const errorLoading = (err) => {
   console.error('Dynamic page loading failed', err); // eslint-disable-line no-console
@@ -50,6 +51,10 @@ export default function createRoutes(store) {
   function loadStockData() {
     store.dispatch(loadStock());
   }
+  // Function to load tabs list
+  function loadTabsData() {
+    store.dispatch(loadTabs());
+  }
 
   return [
     {
@@ -70,21 +75,17 @@ export default function createRoutes(store) {
         importModules.catch(errorLoading);
       },
     }, {
-      onEnter: () => { redirectToLogin(); loadStockData(); },
+      onEnter: () => { redirectToLogin(); loadStockData(); loadTabsData(); },
       path: '/comandas',
       name: 'tabsPage',
       getComponent(nextState, cb) {
         const importModules = Promise.all([
-          System.import('containers/TabsPage/reducer'),
-          System.import('containers/TabsPage/sagas'),
           System.import('containers/TabsPage'),
         ]);
 
         const renderRoute = loadModule(cb);
 
-        importModules.then(([reducer, sagas, component]) => {
-          injectReducer('tabsPage', reducer.default);
-          injectSagas(sagas.default);
+        importModules.then(([component]) => {
           renderRoute(component);
         });
 

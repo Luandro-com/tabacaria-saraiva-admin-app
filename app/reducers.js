@@ -11,6 +11,7 @@ import languageProviderReducer from 'containers/LanguageProvider/reducer';
 
 import userReducer from 'containers/LoginPage/reducer';
 import stockReducer from 'containers/StockPage/reducer';
+import tabsReducer from 'containers/TabsPage/reducer';
 
 /*
  * routeReducer
@@ -50,6 +51,7 @@ export default function createReducer(asyncReducers) {
     form: formReducer,
     user: userReducer,
     stock: stockReducer,
+    tabs: tabsReducer,
     ...asyncReducers,
   });
 }

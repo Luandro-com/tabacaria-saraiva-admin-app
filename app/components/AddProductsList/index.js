@@ -10,6 +10,7 @@ import { parseMoney } from 'utils/parsers';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import Check from 'material-ui/svg-icons/navigation/check';
 import AddProductsItem from 'components/AddProductsItem';
+import SimpleNavbar from 'components/SimpleNavbar';
 
 import styles from './styles.css';
 
@@ -20,6 +21,14 @@ class AddProductsList extends React.Component {
       total: 0,
       listOfItems: [],
     };
+  }
+
+  componentDidMount() {
+    const { items } = this.props;
+    items.map((item) => this.setState({
+      [`stockCount${item.id}`]: item.stock,
+      [`counter${item.id}`]: 0,
+    }));
   }
 
   componentDidUpdate(nextProps) {
@@ -89,6 +98,7 @@ class AddProductsList extends React.Component {
     const { total, listOfItems } = this.state;
     return (
       <div className={styles.container}>
+        <SimpleNavbar title="Adiconar a comanda" />
         {items.map((item, key) => <AddProductsItem
           key={key} add={this.handleAdd}
           remove={this.handleRemove}

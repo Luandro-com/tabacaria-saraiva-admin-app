@@ -9,6 +9,7 @@ import createSagaMiddleware from 'redux-saga';
 import createReducer from './reducers';
 import userSaga from 'containers/LoginPage/sagas';
 import stockSaga from 'containers/StockPage/sagas';
+import tabsSaga from 'containers/TabsPage/sagas';
 
 const sagaMiddleware = createSagaMiddleware();
 const devtools = window.devToolsExtension || (() => noop => noop);
@@ -34,12 +35,8 @@ export default function configureStore(initialState = {}, history) {
   );
 
   // Always present sagas
-  userSaga.map((saga) => {
-    return sagaMiddleware.run(saga);
-  });
-  stockSaga.map((saga) => {
-    return sagaMiddleware.run(saga);
-  });
+  const fixedSagas = [userSaga, stockSaga, tabsSaga];
+  fixedSagas.map((fixSaga) => fixSaga.map((saga) => sagaMiddleware.run(saga)));
 
   // Create hook for async sagas
   store.runSaga = sagaMiddleware.run;

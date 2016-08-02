@@ -3,7 +3,7 @@ import { createSelector } from 'reselect';
 /**
  * Direct selector to the tabsPage state domain
  */
-const selectTabsPageDomain = () => state => state.get('tabsPage');
+const selectTabsPageDomain = () => state => state.get('tabs');
 
 /**
  * Other specific selectors
