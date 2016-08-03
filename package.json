@@ -12,7 +12,8 @@
   "author": "Luandro Vieira",
   "license": "MIT",
   "scripts": {
-    "s3": "npm run build && aws s3 sync ./build s3://admin.tabacariasaraiva.com/ --region sa-east-1",
+    "s3": "npm run build && aws s3 sync ./build s3://admin.tabacariasaraiva.com/ --region sa-east-1 && npm run s3:icons",
+    "s3:icons": "aws s3 cp ./app/favicon.ico s3://admin.tabacariasaraiva.com/ --region sa-east-1 && aws s3 cp ./app/favicon.png s3://admin.tabacariasaraiva.com/ --region sa-east-1",
     "analyze:clean": "rimraf stats.json",
     "preanalyze": "npm run analyze:clean",
     "analyze": "node ./internals/scripts/analyze.js",

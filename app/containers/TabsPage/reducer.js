@@ -10,11 +10,20 @@ import { parseImmutableObject } from 'utils/parsers';
 import {
   LOAD_TABS,
   LOAD_SUCCESS,
+  CANCEL_SUCCESS,
+  CLOSE_TAB_MODAL,
+  SHOW_TAB_MODAL,
+  NAME_TAB_MODAL,
 } from './constants';
 
 const initialState = fromJS({
   loading: false,
   items: [],
+  modals: {
+    showTab: false,
+    closeTab: false,
+    nameTab: false,
+  },
 });
 
 function tabsPageReducer(state = initialState, action) {
@@ -26,6 +35,21 @@ function tabsPageReducer(state = initialState, action) {
       return state
         .set('loading', false)
         .set('items', parseImmutableObject(action.payload));
+    case CANCEL_SUCCESS:
+      return state
+        .updateIn(['items'], list => {
+          const index = list.findIndex(i => i.id === action.payload);
+          return list.slice(0, index).concat(list.slice(index + 1));
+        });
+    case CLOSE_TAB_MODAL:
+      return state
+        .setIn(['modals', 'closeTab'], !state.getIn(['modals', 'closeTab']));
+    case SHOW_TAB_MODAL:
+      return state
+        .setIn(['modals', 'showTab'], !state.getIn(['modals', 'showTab']));
+    case NAME_TAB_MODAL:
+      return state
+        .setIn(['modals', 'nameTab'], !state.getIn(['modals', 'nameTab']));
     default:
       return state;
   }

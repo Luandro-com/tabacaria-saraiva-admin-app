@@ -24,12 +24,18 @@ function StockItem({ remove, name, created, notification, price, stock, id }) {
         targetOrigin={{ horizontal: 'right', vertical: 'top' }}
         anchorOrigin={{ horizontal: 'right', vertical: 'top' }}
       >
-        {/*<MenuItem primaryText="Editar nome" />
+        {/* <MenuItem primaryText="Editar nome" />
         <MenuItem primaryText="Editar preço" />
         <MenuItem primaryText="Editar estoque" />
         <MenuItem primaryText="Editar aviso de estoque" />
-        <MenuItem primaryText="Editar promoção" />*/}
-        <MenuItem onClick={() => remove(id)} primaryText="Remover produto" />
+        <MenuItem primaryText="Editar promoção" /> */}
+        <MenuItem
+          onClick={() => {
+            const confirmation = confirm('Esse item será removido permanentemente do estoque. Tem certeza que deseja continuar?');
+            (confirmation ? remove(id) : console.log('canceled:', c));
+          }}
+          primaryText="Remover produto"
+        />
       </IconMenu>
       <span className={styles.name}>{name}</span>
       <span className={styles.stock} style={{ color: red }}>{stock}</span>

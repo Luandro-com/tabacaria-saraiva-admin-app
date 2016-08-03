@@ -11,7 +11,7 @@ import { push } from 'react-router-redux';
 
 import selectTabsPage from './selectors';
 import selectStockPage from 'containers/StockPage/selectors';
-import { closeTab } from './actions';
+import { closeTab, toggleCloseModal, toggleShowTabModal, toggleNameTabModal, cancelTab } from './actions';
 
 import SearchNavBar from 'containers/SearchNavBar';
 import TabsList from 'components/TabsList';
@@ -36,7 +36,11 @@ const mapStateToProps = createStructuredSelector({
 function mapDispatchToProps(dispatch) {
   return {
     updateTab: (id) => dispatch(push(`/comandas/nova/${id}`)),
+    cancelTab: (id) => dispatch(cancelTab(id)),
     closeTab: (id) => dispatch(closeTab(id)),
+    toggleCloseModal: () => dispatch(toggleCloseModal()),
+    toggleShowTabModal: () => dispatch(toggleShowTabModal()),
+    toggleNameTabModal: () => dispatch(toggleNameTabModal()),
     dispatch,
   };
 }
