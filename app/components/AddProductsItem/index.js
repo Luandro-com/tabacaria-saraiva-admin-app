@@ -16,26 +16,32 @@ function AddProductsItem({ add, remove, id, name, price, counter, stockCount }) 
   return (
     <div className={styles.container}>
       <div className={styles.button}>
-        <RaisedButton
-          onClick={() => add(id, price)}
-          label="+"
-          backgroundColor={black}
-          labelColor={white}
-          labelStyle={{ fontSize: '1.4em' }}
-        />
-        <RaisedButton
-          onClick={() => remove(id, price)}
-          label="-"
-          backgroundColor={white}
-          labelColor={black}
-          labelStyle={{ fontSize: '1.4em' }}
-          style={{ border: `1px solid ${black}` }}
-        />
+        <div className={styles.add}>
+          <RaisedButton
+            fullWidth
+            onClick={() => add(id, price)}
+            label="+"
+            backgroundColor={black}
+            labelColor={white}
+            labelStyle={{ fontSize: '1.4em' }}
+          />
+        </div>
+        <div className={styles.remove}>
+          <RaisedButton
+            fullWidth
+            onClick={() => remove(id, price)}
+            label="-"
+            backgroundColor={white}
+            labelColor={black}
+            labelStyle={{ fontSize: '1.4em' }}
+            style={{ border: `1px solid ${black}` }}
+          />
+        </div>
       </div>
-      <h4>{counter}</h4>
-      <h3>{name}</h3>
-      <h3>{stockCount}</h3>
-      <h3>{parseMoney(price)}</h3>
+      <span className={styles.counter}>{counter}</span>
+      <span className={styles.name}>{name}</span>
+      <span className={styles.stock}>{stockCount}</span>
+      <span className={styles.price}>{parseMoney(price)}</span>
     </div>
   );
 }

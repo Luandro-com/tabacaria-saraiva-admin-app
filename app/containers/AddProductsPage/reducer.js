@@ -1,6 +1,6 @@
 /*
  *
- * AddTabPage reducer
+ * AddProductsPage reducer
  *
  */
 
@@ -11,7 +11,7 @@ import {
 
 const initialState = fromJS({});
 
-function addTabPageReducer(state = initialState, action) {
+function addProductsPageReducer(state = initialState, action) {
   switch (action.type) {
     case ADD:
       return state;
@@ -20,4 +20,4 @@ function addTabPageReducer(state = initialState, action) {
   }
 }
 
-export default addTabPageReducer;
+export default addProductsPageReducer;

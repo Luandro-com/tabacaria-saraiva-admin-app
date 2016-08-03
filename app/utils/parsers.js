@@ -22,3 +22,27 @@ export const parseImmutableObject = (payload) => {
   });
   return itemsList;
 };
+
+export const sumQuantity = (array1, array2) => {
+  function inArray(arr, obj) {
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i].id === obj.id) {
+        return i;
+      }
+    }
+    return -1;
+  }
+
+  const newArray = array1.slice(0); // clone array1
+  for (let i = 0; i < array2.length; i++) {
+    const obj = array2[i];
+    const index = inArray(array1, obj);
+    if (index === -1) {
+      newArray.push(obj);
+    } else {
+      newArray[index] = { id: newArray[index].id, quantity: newArray[index].quantity + obj.quantity };
+    }
+  }
+
+  return newArray;
+};

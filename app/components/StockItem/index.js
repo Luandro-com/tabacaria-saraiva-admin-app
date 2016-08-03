@@ -31,9 +31,9 @@ function StockItem({ remove, name, created, notification, price, stock, id }) {
         <MenuItem primaryText="Editar promoção" />*/}
         <MenuItem onClick={() => remove(id)} primaryText="Remover produto" />
       </IconMenu>
-      <h3>{name}</h3>
-      <h3 style={{ color: red }}>{stock}</h3>
-      <h3>{parseMoney(price)}</h3>
+      <span className={styles.name}>{name}</span>
+      <span className={styles.stock} style={{ color: red }}>{stock}</span>
+      <span className={styles.price}>{parseMoney(price)}</span>
     </div>
   );
 }

@@ -1,6 +1,18 @@
 .container {
-  margin: 3% auto;
+  margin: 7% auto;
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-around; 
+}
+
+.name {
+  max-width: 40%;
+}
+
+.stock {
+
+}
+
+.price {
+
 }

@@ -5,7 +5,7 @@
 */
 
 import React from 'react';
-import { parseMoney } from 'utils/parsers';
+import { parseMoney, sumQuantity } from 'utils/parsers';
 
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import Check from 'material-ui/svg-icons/navigation/check';
@@ -94,11 +94,15 @@ class AddProductsList extends React.Component {
   }
 
   render() {
-    const { update, items } = this.props;
+    const { create, update, items, params: { tabId }, tab } = this.props;
     const { total, listOfItems } = this.state;
+    const newList = sumQuantity(tab.items, listOfItems);
+
     return (
       <div className={styles.container}>
+        {/* Navbar */}
         <SimpleNavbar title="Adiconar a comanda" />
+        {/* Items List */}
         {items.map((item, key) => <AddProductsItem
           key={key} add={this.handleAdd}
           remove={this.handleRemove}
@@ -106,13 +110,15 @@ class AddProductsList extends React.Component {
           counter={this.state[`counter${item.id}`]}
           {...item}
         />)}
+        {/* Check button */}
         <FloatingActionButton
           className={styles.addButton}
-          onClick={() => update(listOfItems)}
+          onClick={() => (tabId ? update(newList, tabId) : create(listOfItems))}
           secondary
         >
           <Check />
         </FloatingActionButton>
+        {/* Total bar */}
         <div className={styles.total}>
           Total: {parseMoney(total)}
         </div>
@@ -120,10 +126,18 @@ class AddProductsList extends React.Component {
     );
   }
 }
+AddProductsList.defaultProps = {
+  tab: {
+    items: [],
+  },
+};
 
 AddProductsList.propTypes = {
+  create: React.PropTypes.func.isRequired,
   update: React.PropTypes.func.isRequired,
+  params: React.PropTypes.object.isRequired,
   items: React.PropTypes.array.isRequired,
+  tab: React.PropTypes.object,
 };
 
 export default AddProductsList;

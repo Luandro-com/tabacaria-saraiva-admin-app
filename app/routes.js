@@ -172,20 +172,20 @@ export default function createRoutes(store) {
         importModules.catch(errorLoading);
       },
     }, {
-      onEnter: () => { redirectToLogin(); loadStockData(); },
-      path: '/comandas/nova',
-      name: 'addTabPage',
+      onEnter: () => { redirectToLogin(); loadStockData(); loadTabsData(); },
+      path: '/comandas/nova(/:tabId)',
+      name: 'addProductsPage',
       getComponent(nextState, cb) {
         const importModules = Promise.all([
-          System.import('containers/AddTabPage/reducer'),
-          System.import('containers/AddTabPage/sagas'),
-          System.import('containers/AddTabPage'),
+          System.import('containers/AddProductsPage/reducer'),
+          System.import('containers/AddProductsPage/sagas'),
+          System.import('containers/AddProductsPage'),
         ]);
 
         const renderRoute = loadModule(cb);
 
         importModules.then(([reducer, sagas, component]) => {
-          injectReducer('addTabPage', reducer.default);
+          injectReducer('addProductsPage', reducer.default);
           injectSagas(sagas.default);
           renderRoute(component);
         });

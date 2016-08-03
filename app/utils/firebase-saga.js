@@ -38,17 +38,17 @@ export function* getAll(path) {
   };
 }
 
-export function* create(path, data) {
-  const key = yield call(newKey, path);
-  const payload = yield call(() => data, key);
-  const ops = newOps('error');
-  const ref = firebaseDb.ref();
-  const [_, { error }] = yield [
-    call([ref, ref.update], payload, ops.handler),
-    take(ops),
-  ];
-  return error;
-}
+// export function* create(path, data) {
+//   const key = yield call(newKey, path);
+//   const payload = yield call(() => data, key);
+//   const ops = newOps('error');
+//   const ref = firebaseDb.ref();
+//   const [_, { error }] = yield [
+//     call([ref, ref.update], payload, ops.handler),
+//     take(ops),
+//   ];
+//   return error;
+// }
 
 export function* push(path, data) {
   const ref = firebaseDb.ref(path);
@@ -79,7 +79,11 @@ export function* update(path, key, payload) {
     call([ref, ref.update], payload, ops.handler),
     take(ops),
   ];
-  return error;
+  return {
+    success: true,
+    message: `updated ${path}/${key}`,
+    error: error,
+  };
 }
 
 function* runSync(ref, eventType, creator) {

@@ -7,6 +7,7 @@
 import React from 'react';
 import { createStructuredSelector } from 'reselect';
 import { connect } from 'react-redux';
+import { push } from 'react-router-redux';
 
 import selectTabsPage from './selectors';
 import selectStockPage from 'containers/StockPage/selectors';
@@ -34,6 +35,7 @@ const mapStateToProps = createStructuredSelector({
 
 function mapDispatchToProps(dispatch) {
   return {
+    updateTab: (id) => dispatch(push(`/comandas/nova/${id}`)),
     closeTab: (id) => dispatch(closeTab(id)),
     dispatch,
   };

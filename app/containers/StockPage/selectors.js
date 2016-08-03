@@ -8,7 +8,10 @@ const selectStockPageDomain = () => state => state.get('stock');
 /**
  * Other specific selectors
  */
-
+const selectStockItems = () => createSelector(
+  selectStockPageDomain(),
+  (stockState) => stockState.get('items')
+);
 
 /**
  * Default selector used by StockPage
@@ -22,4 +25,5 @@ const selectStockPage = () => createSelector(
 export default selectStockPage;
 export {
   selectStockPageDomain,
+  selectStockItems,
 };
