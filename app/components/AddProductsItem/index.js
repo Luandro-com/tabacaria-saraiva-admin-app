@@ -19,7 +19,7 @@ function AddProductsItem({ add, remove, id, name, price, counter, stockCount }) 
         <div className={styles.add}>
           <RaisedButton
             fullWidth
-            onClick={() => add(id, price)}
+            onTouchTap={() => add(id, price)}
             label="+"
             backgroundColor={black}
             labelColor={white}
@@ -29,7 +29,7 @@ function AddProductsItem({ add, remove, id, name, price, counter, stockCount }) 
         <div className={styles.remove}>
           <RaisedButton
             fullWidth
-            onClick={() => remove(id, price)}
+            onTouchTap={() => remove(id, price)}
             label="-"
             backgroundColor={white}
             labelColor={black}

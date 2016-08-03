@@ -19,7 +19,7 @@ function SideMenu({ toggle, logout }) {
     <div className={styles.sideMenu}>
       <AppBar
         title="Menu"
-        iconElementLeft={<IconButton onClick={toggle}><NavigationClose /></IconButton>}
+        iconElementLeft={<IconButton onTouchTap={toggle}><NavigationClose /></IconButton>}
       />
       <List>
         <Link to="/"><ListItem>Comandas</ListItem></Link>
@@ -28,7 +28,7 @@ function SideMenu({ toggle, logout }) {
         {/*<Link to="/cadastrar-gerente"><ListItem>Cadastrar gerente</ListItem></Link>*/}
         <Link to="/cadastrar-administrador"><ListItem>Cadastrar administrador</ListItem></Link>
         <Link to="/sobre"><ListItem>Sobre</ListItem></Link>
-        <ListItem onClick={logout}>Sair</ListItem>
+        <ListItem onTouchTap={logout}>Sair</ListItem>
         <div className={styles.footer}><a target="_blank" href="http://luandro.com">por luandro</a></div>
       </List>    
     </div>

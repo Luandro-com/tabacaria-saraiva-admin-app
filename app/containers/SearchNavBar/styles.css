@@ -1,5 +1,9 @@
 .container { /* stylelint-ignore */
 }
+.icon {
+  position: relative;
+  bottom: 5px;
+}
 .sideMenu {
   text-align: right;
   width: 200px;

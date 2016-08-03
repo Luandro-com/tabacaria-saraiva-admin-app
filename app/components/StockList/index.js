@@ -5,6 +5,7 @@
 */
 
 import React from 'react';
+import { red } from 'utils/colors';
 
 import StockItem from 'components/StockItem';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
@@ -18,7 +19,7 @@ function StockList({ remove, loading, items }) {
   return (
     <div className={styles.stockList}>
       {items.map((item, key) => <StockItem remove={remove} key={key} {...item} />)}
-      {loading && <div className={styles.loading}><CircularProgress size={1.5} /></div>}
+      {loading && <div className={styles.loading}><CircularProgress color={red} size={1.5} /></div>}
       <Link to="/estoque/adicionar">
         <FloatingActionButton className={styles.addButton} secondary>
           <ContentAdd />

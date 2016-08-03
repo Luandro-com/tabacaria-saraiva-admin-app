@@ -30,7 +30,7 @@ function StockItem({ remove, name, created, notification, price, stock, id }) {
         <MenuItem primaryText="Editar aviso de estoque" />
         <MenuItem primaryText="Editar promoção" /> */}
         <MenuItem
-          onClick={() => {
+          onTouchTap={() => {
             const confirmation = confirm('Esse item será removido permanentemente do estoque. Tem certeza que deseja continuar?');
             (confirmation ? remove(id) : console.log('canceled:', c));
           }}

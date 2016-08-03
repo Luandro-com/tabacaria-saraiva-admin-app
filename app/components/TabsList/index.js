@@ -6,6 +6,7 @@
 
 import React from 'react';
 import { Link } from 'react-router';
+import { red } from 'utils/colors';
 
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
@@ -18,7 +19,7 @@ function TabsList(props) {
   const { tabs: { loading, items }, stock } = props;
   return (
     <div className={styles.tabsList}>
-      {loading && <div className={styles.loading}><CircularProgress size={1.5} /></div>}
+      {loading && <div className={styles.loading}><CircularProgress color={red} size={1.5} /></div>}
       {items.map((item, key) => <TabsItem
         key={key}
         {...props}

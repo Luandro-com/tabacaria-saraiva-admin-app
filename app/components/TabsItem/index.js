@@ -51,9 +51,9 @@ function TabsItem({
         targetOrigin={{ horizontal: 'right', vertical: 'top' }}
         anchorOrigin={{ horizontal: 'right', vertical: 'top' }}
       >
-        <MenuItem onClick={toggleShowTabModal} primaryText="Ver comanda" />
-        <MenuItem onClick={toggleNameTabModal} primaryText="Mudar nome" />
-        <MenuItem onClick={() => cancelTab(id)} primaryText="Cancelar comanda" />
+        <MenuItem onTouchTap={toggleShowTabModal} primaryText="Ver comanda" />
+        <MenuItem onTouchTap={toggleNameTabModal} primaryText="Mudar nome" />
+        <MenuItem onTouchTap={() => cancelTab(id)} primaryText="Cancelar comanda" />
       </IconMenu>
       <div className={styles.name}>
         <span>{name || 'Balcão'}</span>
@@ -62,7 +62,7 @@ function TabsItem({
       <IconButton
         iconStyle={{ width: 36, height: 36, color: red }}
         style={{ width: 72, height: 72, padding: 12, textAlign: 'center' }}
-        onClick={() => updateTab(id)}
+        onTouchTap={() => updateTab(id)}
       >
         <AddCircle />
       </IconButton>
@@ -70,7 +70,7 @@ function TabsItem({
       <IconButton
         iconStyle={{ width: 36, height: 36, color: red }}
         style={{ width: 72, height: 72, padding: 12, textAlign: 'center' }}
-        onClick={toggleCloseModal}
+        onTouchTap={toggleCloseModal}
       >
         <AlignBottom />
       </IconButton>

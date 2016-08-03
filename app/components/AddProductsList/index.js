@@ -113,7 +113,7 @@ class AddProductsList extends React.Component {
         {/* Check button */}
         <FloatingActionButton
           className={styles.addButton}
-          onClick={() => (tabId ? update(newList, tabId) : create(listOfItems))}
+          onTouchTap={() => (tabId ? update(newList, tabId) : create(listOfItems))}
           secondary
         >
           <Check />
