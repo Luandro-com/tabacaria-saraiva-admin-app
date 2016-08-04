@@ -41,7 +41,6 @@ export class SearchNavBar extends React.Component { // eslint-disable-line react
   }
 
   render() {
-    const textDisplay = 'none';
     const { userLogout, changeRoute } = this.props;
     const { open } = this.state;
     return (

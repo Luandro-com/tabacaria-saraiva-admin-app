@@ -8,29 +8,19 @@ import React from 'react';
 import { parseMoney } from 'utils/parsers';
 import { red } from 'utils/colors';
 
-import TabModal from 'components/TabModal';
-import TabNameModal from 'components/TabNameModal';
-import TabCloseModal from 'components/TabCloseModal';
-
 import AddCircle from 'material-ui/svg-icons/content/add-circle';
 import AlignBottom from 'material-ui/svg-icons/editor/vertical-align-bottom';
 import IconButton from 'material-ui/IconButton';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 import IconMenu from 'material-ui/IconMenu';
 import MenuItem from 'material-ui/MenuItem';
-import Dialog from 'material-ui/Dialog';
-import TimeAgo from 'react-timeago';
-import ptStrings from 'react-timeago/lib/language-strings/pt-br';
-import buildFormatter from 'react-timeago/lib/formatters/buildFormatter';
+import TimeAgo from 'components/TimeAgo';
 
 import styles from './styles.css';
 
-const formatter = buildFormatter(ptStrings);
-
 function TabsItem({
-  updateTab, cancelTab, closeTab,
+  updateTab, cancelTab,
   toggleCloseModal, toggleShowTabModal, toggleNameTabModal,
-  tabs: { modals },
   id, name, created, items, products,
   }) {
   // Map over all products, return the ones that are in the items list
@@ -51,13 +41,13 @@ function TabsItem({
         targetOrigin={{ horizontal: 'right', vertical: 'top' }}
         anchorOrigin={{ horizontal: 'right', vertical: 'top' }}
       >
-        <MenuItem onTouchTap={toggleShowTabModal} primaryText="Ver comanda" />
-        <MenuItem onTouchTap={toggleNameTabModal} primaryText="Mudar nome" />
+        <MenuItem onTouchTap={() => toggleShowTabModal(id)} primaryText="Ver comanda" />
+        <MenuItem onTouchTap={() => toggleNameTabModal(id)} primaryText="Mudar nome" />
         <MenuItem onTouchTap={() => cancelTab(id)} primaryText="Cancelar comanda" />
       </IconMenu>
       <div className={styles.name}>
-        <span>{name || 'Balcão'}</span>
-        <span className={styles.time}><TimeAgo date={created} formatter={formatter} /></span>
+        <span>{name}</span>
+        <span className={styles.time}><TimeAgo date={created} /></span>
       </div>
       <IconButton
         iconStyle={{ width: 36, height: 36, color: red }}
@@ -74,31 +64,15 @@ function TabsItem({
       >
         <AlignBottom />
       </IconButton>
-      <Dialog
-        modal={false}
-        onRequestClose={toggleShowTabModal}
-        open={modals.showTab}
-      >
-        <TabModal />
-      </Dialog>
-      <Dialog
-        modal={false}
-        onRequestClose={toggleNameTabModal}
-        open={modals.nameTab}
-      >
-        <TabNameModal />
-      </Dialog>
-      <Dialog
-        open={modals.closeTab}
-      >
-        <TabCloseModal closeTab={closeTab} />
-      </Dialog>
     </div>
   );
 }
 
+TabsItem.defaultProps = {
+  name: 'Balcão',
+};
+
 TabsItem.propTypes = {
-  closeTab: React.PropTypes.func.isRequired,
   cancelTab: React.PropTypes.func.isRequired,
   updateTab: React.PropTypes.func.isRequired,
   toggleShowTabModal: React.PropTypes.func.isRequired,

@@ -38,9 +38,9 @@ function mapDispatchToProps(dispatch) {
     updateTab: (id) => dispatch(push(`/comandas/nova/${id}`)),
     cancelTab: (id) => dispatch(cancelTab(id)),
     closeTab: (id) => dispatch(closeTab(id)),
-    toggleCloseModal: () => dispatch(toggleCloseModal()),
-    toggleShowTabModal: () => dispatch(toggleShowTabModal()),
-    toggleNameTabModal: () => dispatch(toggleNameTabModal()),
+    toggleCloseModal: (id) => dispatch(toggleCloseModal(id)),
+    toggleShowTabModal: (id) => dispatch(toggleShowTabModal(id)),
+    toggleNameTabModal: (id) => dispatch(toggleNameTabModal(id)),
     dispatch,
   };
 }

@@ -37,15 +37,18 @@ export const closeTab = (id) => ({
   payload: id,
 });
 
-export const toggleCloseModal = () => ({
+export const toggleCloseModal = (id) => ({
   type: CLOSE_TAB_MODAL,
+  payload: id,
 });
 
-export const toggleShowTabModal = () => ({
+export const toggleShowTabModal = (id) => ({
   type: SHOW_TAB_MODAL,
+  payload: id,
 });
 
-export const toggleNameTabModal = () => ({
+export const toggleNameTabModal = (id) => ({
   type: NAME_TAB_MODAL,
+  payload: id,
 });
 

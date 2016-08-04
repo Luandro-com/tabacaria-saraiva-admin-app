@@ -20,6 +20,7 @@ const initialState = fromJS({
   loading: false,
   items: [],
   modals: {
+    selectedTabId: 'não encontrado',
     showTab: false,
     closeTab: false,
     nameTab: false,
@@ -43,12 +44,15 @@ function tabsPageReducer(state = initialState, action) {
         });
     case CLOSE_TAB_MODAL:
       return state
+        .setIn(['modals', 'selectedTabId'], action.payload ? action.payload : 'não encontrado')
         .setIn(['modals', 'closeTab'], !state.getIn(['modals', 'closeTab']));
     case SHOW_TAB_MODAL:
       return state
+        .setIn(['modals', 'selectedTabId'], action.payload ? action.payload : 'não encontrado')
         .setIn(['modals', 'showTab'], !state.getIn(['modals', 'showTab']));
     case NAME_TAB_MODAL:
       return state
+        .setIn(['modals', 'selectedTabId'], action.payload ? action.payload : 'não encontrado')
         .setIn(['modals', 'nameTab'], !state.getIn(['modals', 'nameTab']));
     default:
       return state;
