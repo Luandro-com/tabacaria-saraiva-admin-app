@@ -54,7 +54,7 @@ function TabsList(props) {
       >
         <TabNameModal />
       </Dialog>
-      <Dialog open={modals.closeTab}>
+      <Dialog open={modals.closeTab} autoScrollBodyContent>
         <TabCloseModal
           id={modals.selectedTabId}
           closeTab={closeTab}

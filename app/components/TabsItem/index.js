@@ -60,7 +60,7 @@ function TabsItem({
       <IconButton
         iconStyle={{ width: 36, height: 36, color: red }}
         style={{ width: 72, height: 72, padding: 12, textAlign: 'center' }}
-        onTouchTap={toggleCloseModal}
+        onTouchTap={() => toggleCloseModal(id)}
       >
         <AlignBottom />
       </IconButton>

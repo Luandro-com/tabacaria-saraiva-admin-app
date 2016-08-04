@@ -1,5 +1,6 @@
 .container { /* stylelint-ignore */
 	padding-bottom: 80px;
+	color: black;
 }
 
 .title {
@@ -13,6 +14,13 @@
 	font-weight: 400;
 }
 
+.parcel {
+	display: flex;
+	flex-flow: row nowrap;
+	align-items: center;
+	justify-content: space-between;
+}
+
 .footer {
 	position: fixed;
 	bottom: 0;
@@ -21,6 +29,7 @@
 	flex-flow: row nowrap;
 	width: 100%;
 	text-align: center;
+  color: #CCBEA5;
 }
 .footer * {
 	width: 50%;

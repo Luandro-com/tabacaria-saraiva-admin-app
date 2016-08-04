@@ -43,6 +43,7 @@ function tabsPageReducer(state = initialState, action) {
           return list.slice(0, index).concat(list.slice(index + 1));
         });
     case CLOSE_TAB_MODAL:
+    	console.log('action.payload:', action.payload);
       return state
         .setIn(['modals', 'selectedTabId'], action.payload ? action.payload : 'não encontrado')
         .setIn(['modals', 'closeTab'], !state.getIn(['modals', 'closeTab']));
