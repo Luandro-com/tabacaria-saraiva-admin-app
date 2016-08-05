@@ -5,6 +5,7 @@
 */
 
 import React from 'react';
+import { parseMoney, methodParser } from 'utils/parsers';
 
 import TimeAgo from 'components/TimeAgo';
 import { TableRow, TableRowColumn } from 'material-ui/Table';
@@ -15,9 +16,9 @@ function TransactionsItem({ id, method, total, user, created }) {
   return (
     <TableRow>
       <TableRowColumn><TimeAgo date={created} /></TableRowColumn>
-      <TableRowColumn>{total}</TableRowColumn>
+      <TableRowColumn>R$ {parseMoney(total)}</TableRowColumn>
       <TableRowColumn>{user}</TableRowColumn>
-      <TableRowColumn>{method}</TableRowColumn>
+      <TableRowColumn>{methodParser(method)}</TableRowColumn>
     </TableRow>
   );
 }

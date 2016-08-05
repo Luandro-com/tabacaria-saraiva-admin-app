@@ -4,6 +4,21 @@ export const discountCalc = (total, disc) => total - (total * disc);
 
 export const removeCommas = (value) => parseFloat(value.replace(/,/g, ''));
 
+export const methodParser = (method) => {
+  switch (method) {
+    case 'money':
+      return 'Dinheiro';
+    case 'credit':
+      return 'Crédito';
+    case 'debit':
+      return 'Débito';
+    case 'promo':
+      return 'Fidelidade';
+    default:
+      return 'Nenhum';
+  }
+};
+
 export const parseMoney = (value) => {
   let tmp = `${value}`;
   tmp = tmp.replace(/([0-9]{2})$/g, ',$1');
