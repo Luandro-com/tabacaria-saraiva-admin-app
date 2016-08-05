@@ -1,12 +1,16 @@
 import each from 'lodash/each';
 
+export const discountCalc = (total, disc) => total - (total * disc);
+
+export const removeCommas = (value) => parseFloat(value.replace(/,/g, ''));
+
 export const parseMoney = (value) => {
   let tmp = `${value}`;
   tmp = tmp.replace(/([0-9]{2})$/g, ',$1');
   if (tmp.length > 6) {
     tmp = tmp.replace(/([0-9]{3}),([0-9]{2}$)/g, '.$1,$2');
   }
-  return `R$${tmp}`;
+  return tmp;
 };
 
 export const parseImmutableObject = (payload) => {

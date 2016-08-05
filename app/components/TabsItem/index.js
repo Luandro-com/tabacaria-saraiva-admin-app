@@ -56,11 +56,11 @@ function TabsItem({
       >
         <AddCircle />
       </IconButton>
-      <span className={styles.total}>{parseMoney(total)}</span>
+      <span className={styles.total}>R$ {parseMoney(total)}</span>
       <IconButton
         iconStyle={{ width: 36, height: 36, color: red }}
         style={{ width: 72, height: 72, padding: 12, textAlign: 'center' }}
-        onTouchTap={() => toggleCloseModal(id)}
+        onTouchTap={() => toggleCloseModal(id, total)}
       >
         <AlignBottom />
       </IconButton>
@@ -70,6 +70,7 @@ function TabsItem({
 
 TabsItem.defaultProps = {
   name: 'Balcão',
+  items: [],
 };
 
 TabsItem.propTypes = {

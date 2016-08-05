@@ -7,6 +7,10 @@ const selectLoginPageDomain = () => state => state.get('user');
 /**
  * Other specific selectors
  */
+const selectUserName = () => createSelector(
+  selectLoginPageDomain(),
+  (userState) => userState.get('currentUser')
+);
 
 /**
  * Default selector used by LoginPage
@@ -20,4 +24,5 @@ const selectLoginPage = () => createSelector(
 export default selectLoginPage;
 export {
   selectLoginPageDomain,
+  selectUserName
 };

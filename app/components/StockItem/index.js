@@ -39,7 +39,7 @@ function StockItem({ remove, name, created, notification, price, stock, id }) {
       </IconMenu>
       <span className={styles.name}>{name}</span>
       <span className={styles.stock} style={{ color: red }}>{stock}</span>
-      <span className={styles.price}>{parseMoney(price)}</span>
+      <span className={styles.price}>R$ {parseMoney(price)}</span>
     </div>
   );
 }

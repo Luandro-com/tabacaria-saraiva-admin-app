@@ -1,8 +1,8 @@
 /*
  *
- * AddTabPage constants
+ * AddProductsPage constants
  *
  */
 
-export const ADD = 'app/AddTabPage/ADD';
-export const UPDATE = 'app/AddTabPage/UPDATE';
+export const ADD = 'app/AddProductsPage/ADD';
+export const UPDATE = 'app/AddProductsPage/UPDATE';

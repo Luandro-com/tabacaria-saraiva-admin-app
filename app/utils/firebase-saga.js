@@ -86,6 +86,24 @@ export function* update(path, key, payload) {
   };
 }
 
+export function* transaction(path, key, quantity, operation) {
+  const ref = firebaseDb.ref(`${path}/${key}`);
+  switch (operation) {
+    case '-':
+      ref.transaction((current) => current - quantity);
+      break;
+    case '+':
+      ref.transaction((current) => current + quantity);
+      break;
+    default:
+      break;
+  }
+  return {
+    success: true,
+    message: `atomic update to ${path}/${key}`,
+  };
+}
+
 function* runSync(ref, eventType, creator) {
   const ops = newOps();
   yield call([ref, ref.on], eventType, ops.handler);

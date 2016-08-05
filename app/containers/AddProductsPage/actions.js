@@ -1,6 +1,6 @@
 /*
  *
- * AddTabPage actions
+ * AddProductsPage actions
  *
  */
 

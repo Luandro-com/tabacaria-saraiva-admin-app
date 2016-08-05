@@ -11,6 +11,7 @@ import {
   LOAD_TABS,
   LOAD_SUCCESS,
   CANCEL_SUCCESS,
+  CLOSE_TAB_SUCCESS,
   CLOSE_TAB_MODAL,
   SHOW_TAB_MODAL,
   NAME_TAB_MODAL,
@@ -21,11 +22,14 @@ const initialState = fromJS({
   items: [],
   modals: {
     selectedTabId: 'não encontrado',
+    selectedTabTotal: 0,
     showTab: false,
     closeTab: false,
     nameTab: false,
   },
 });
+
+const isString = (payload) => typeof payload === 'string';
 
 function tabsPageReducer(state = initialState, action) {
   switch (action.type) {
@@ -42,10 +46,16 @@ function tabsPageReducer(state = initialState, action) {
           const index = list.findIndex(i => i.id === action.payload);
           return list.slice(0, index).concat(list.slice(index + 1));
         });
-    case CLOSE_TAB_MODAL:
-    	console.log('action.payload:', action.payload);
+    case CLOSE_TAB_SUCCESS:
       return state
-        .setIn(['modals', 'selectedTabId'], action.payload ? action.payload : 'não encontrado')
+        .updateIn(['items'], list => {
+          const index = list.findIndex(i => i.id === action.payload);
+          return list.slice(0, index).concat(list.slice(index + 1));
+        });
+    case CLOSE_TAB_MODAL:
+      return state
+        .setIn(['modals', 'selectedTabId'], isString(action.payload.id) ? action.payload.id : 'não encontrado')
+        .setIn(['modals', 'selectedTabTotal'], Number.isInteger(action.payload.total) ? action.payload.total : 0)
         .setIn(['modals', 'closeTab'], !state.getIn(['modals', 'closeTab']));
     case SHOW_TAB_MODAL:
       return state

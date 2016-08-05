@@ -41,7 +41,7 @@ function AddProductsItem({ add, remove, id, name, price, counter, stockCount }) 
       <span className={styles.counter}>{counter}</span>
       <span className={styles.name}>{name}</span>
       <span className={styles.stock}>{stockCount}</span>
-      <span className={styles.price}>{parseMoney(price)}</span>
+      <span className={styles.price}>R$ {parseMoney(price)}</span>
     </div>
   );
 }

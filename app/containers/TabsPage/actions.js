@@ -5,14 +5,10 @@
  */
 
 import {
-  LOAD_TABS,
-  LOAD_SUCCESS,
-  CLOSE_TAB,
-  CANCEL_TAB,
-  CANCEL_SUCCESS,
-  CLOSE_TAB_MODAL,
-  SHOW_TAB_MODAL,
-  NAME_TAB_MODAL,
+  LOAD_TABS, LOAD_SUCCESS,
+  CLOSE_TAB, CLOSE_TAB_SUCCESS,
+  CANCEL_TAB, CANCEL_SUCCESS,
+  CLOSE_TAB_MODAL, SHOW_TAB_MODAL, NAME_TAB_MODAL,
 } from './constants';
 
 export const load = () => ({ type: LOAD_TABS });
@@ -32,14 +28,19 @@ export const cancelSuccess = (id) => ({
   payload: id,
 });
 
-export const closeTab = (id) => ({
+export const closeTab = (id, parcels) => ({
   type: CLOSE_TAB,
+  payload: { id, parcels },
+});
+
+export const closeTabSuccess = (id) => ({
+  type: CLOSE_TAB_SUCCESS,
   payload: id,
 });
 
-export const toggleCloseModal = (id) => ({
+export const toggleCloseModal = (id, total) => ({
   type: CLOSE_TAB_MODAL,
-  payload: id,
+  payload: { id, total },
 });
 
 export const toggleShowTabModal = (id) => ({

@@ -12,7 +12,6 @@ import TabModal from 'components/TabModal';
 import TabNameModal from 'components/TabNameModal';
 import TabCloseModal from 'components/TabCloseModal';
 import Dialog from 'material-ui/Dialog';
-
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
 import TabsItem from 'components/TabsItem';
@@ -22,6 +21,7 @@ import styles from './styles.css';
 
 function TabsList(props) {
   const { closeTab, toggleCloseModal, toggleShowTabModal, toggleNameTabModal, tabs: { loading, items, modals }, stock } = props;
+
   return (
     <div className={styles.tabsList}>
       {loading && <div className={styles.loading}><CircularProgress color={red} size={1.5} /></div>}
@@ -57,8 +57,9 @@ function TabsList(props) {
       <Dialog open={modals.closeTab} autoScrollBodyContent>
         <TabCloseModal
           id={modals.selectedTabId}
+          total={modals.selectedTabTotal}
+          cancel={toggleCloseModal}
           closeTab={closeTab}
-          cancel={toggleCloseModal} 
         />
       </Dialog>
     </div>
