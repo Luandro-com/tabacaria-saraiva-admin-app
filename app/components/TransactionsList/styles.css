@@ -1,3 +1,7 @@
 .transactionsList { /* stylelint-ignore */
 
 }
+.loading {
+  text-align: center;
+  margin: 10% auto;
+}
