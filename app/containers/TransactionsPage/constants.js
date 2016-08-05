@@ -4,4 +4,5 @@
  *
  */
 
-export const DEFAULT_ACTION = 'app/TransactionsPage/DEFAULT_ACTION';
+export const LOAD = 'app/TransactionsPage/LOAD';
+export const LOAD_SUCCESS = 'app/TransactionsPage/LOAD_SUCCESS';

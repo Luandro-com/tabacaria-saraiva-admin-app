@@ -7,6 +7,7 @@ import { currentUser } from 'utils/localstorage';
 import { loginSuccess } from 'containers/LoginPage/actions';
 import { load as loadStock } from 'containers/StockPage/actions';
 import { load as loadTabs } from 'containers/TabsPage/actions';
+import { load as loadTransactions } from 'containers/TransactionsPage/actions';
 
 const errorLoading = (err) => {
   console.error('Dynamic page loading failed', err); // eslint-disable-line no-console
@@ -54,6 +55,10 @@ export default function createRoutes(store) {
   // Function to load tabs list
   function loadTabsData() {
     store.dispatch(loadTabs());
+  }
+  // Function to load tabs list
+  function loadTransactionsData() {
+    store.dispatch(loadTransactions());
   }
 
   return [
@@ -193,6 +198,7 @@ export default function createRoutes(store) {
         importModules.catch(errorLoading);
       },
     }, {
+      onEnter: () => { redirectToLogin(); },
       path: '/transacoes',
       name: 'transactionsPage',
       getComponent(nextState, cb) {

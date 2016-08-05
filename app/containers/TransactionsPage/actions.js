@@ -5,11 +5,14 @@
  */
 
 import {
-  DEFAULT_ACTION,
+  LOAD, LOAD_SUCCESS,
 } from './constants';
 
-export function defaultAction() {
-  return {
-    type: DEFAULT_ACTION,
-  };
-}
+export const load = () => ({
+  type: LOAD,
+});
+
+export const loadSuccess = (data) => ({
+  type: LOAD_SUCCESS,
+  payload: data,
+});
