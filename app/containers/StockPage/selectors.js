@@ -10,7 +10,7 @@ const selectStockPageDomain = () => state => state.get('stock');
  */
 const selectStockItems = () => createSelector(
   selectStockPageDomain(),
-  (stockState) => stockState.get('items')
+  (stockState) => stockState.get('items').toJS()
 );
 
 /**

@@ -17,6 +17,7 @@ export function* add() {
     if (fetch.success) {
       yield put(changeRoute('/comandas'));
     }
+    return;
   }
 }
 

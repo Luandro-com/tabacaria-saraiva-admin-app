@@ -9,16 +9,12 @@ import {
   UPDATE,
 } from './constants';
 
-export function create(data) {
-  return {
-    type: ADD,
-    payload: data,
-  };
-}
+export const create = (data) => ({
+  type: ADD,
+  payload: data,
+});
 
-export function update(data, id) {
-  return {
-    type: UPDATE,
-    payload: { data, id },
-  };
-}
+export const update = (data, id) => ({
+  type: UPDATE,
+  payload: { data, id },
+});
