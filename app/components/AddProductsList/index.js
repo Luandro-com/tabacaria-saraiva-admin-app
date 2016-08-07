@@ -127,6 +127,7 @@ class AddProductsList extends React.Component {
   }
 }
 AddProductsList.defaultProps = {
+  items: [],
   tab: {
     items: [],
   },
