@@ -10,10 +10,19 @@
  */
 
 import React from 'react';
+import { connect } from 'react-redux';
+import { push } from 'react-router-redux';
 import { FormattedMessage } from 'react-intl';
 import messages from './messages';
 
-export default class NotFound extends React.Component { // eslint-disable-line react/prefer-stateless-function
+class NotFound extends React.Component { // eslint-disable-line react/prefer-stateless-function
+  static propTypes = {
+    changeRoute: React.PropTypes.func,
+  }
+
+  componentDidMount() {
+    this.props.changeRoute();
+  }
 
   render() {
     return (
@@ -23,3 +32,12 @@ export default class NotFound extends React.Component { // eslint-disable-line r
     );
   }
 }
+
+function mapDispatchToProps(dispatch) {
+  return {
+    changeRoute: () => dispatch(push('/')),
+    dispatch,
+  };
+}
+
+export default connect(null, mapDispatchToProps)(NotFound);
